@@ -55,14 +55,16 @@ values."
      syntax-checking
      ;; version-control
      themes-megapack
-     spacemacs-prettier
      evil-commentary
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages
+   '(
+     prettier-js
+     )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -141,7 +143,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Ubuntu Mono"
-                               :size 16
+                               :size 18
                                :weight normal
                                :width normal
                                :line-height 1.50
@@ -333,6 +335,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
    ;; Avy
    avy-all-windows 'all-frames
+
+   line-spacing 2
    )
    (set-face-attribute 'region nil :background "#666" :foreground "#ffffff")
   )
@@ -361,6 +365,9 @@ you should place your code here."
   ;; Prettier
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (add-hook 'web-mode-hook 'prettier-js-mode)
+
+  ;; Switch to normal mode on save
+  (add-hook 'after-save-hook #'evil-normal-state)
 
   ;;(bb/define-key company-active-map
   ;;  (kbd "C-w") 'evil-delete-backward-word)

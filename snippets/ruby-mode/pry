@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: binding pry
+# key: pry
+# uuid: pry
+# --
+binding.pry
